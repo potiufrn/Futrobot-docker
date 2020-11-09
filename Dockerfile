@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y \
     git \
     qt5-default \
     vim \
+    net-tools \
     sudo \
     protobuf-compiler \
     libbluetooth-dev \
