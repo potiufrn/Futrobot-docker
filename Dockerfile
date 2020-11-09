@@ -20,4 +20,7 @@ RUN cd /home && \
     cd Futrobot && \
     make
 
-WORKDIR /home/Futrobot
+ENV PATH=/home:$PATH
+COPY poti.sh /home/
+
+WORKDIR /home
