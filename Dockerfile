@@ -4,10 +4,7 @@ FROM ubuntu:20.04
 ENV TZ=America/Recife
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-WORKDIR /
-
 RUN apt-get update && apt-get install -y \
-    tzdata \
     build-essential \
     cmake \
     git \
@@ -17,8 +14,9 @@ RUN apt-get update && apt-get install -y \
     libbluetooth-dev \
     && apt-get clean
     
-RUN git clone -b latest --single-branch https://github.com/potiufrn/Futrobot.git
+RUN cd /home && \
+    git clone -b latest --single-branch https://github.com/potiufrn/Futrobot.git && \
+    cd Futrobot && \
+    make
 
-WORKDIR /Futrobot
-
-RUN make 
+WORKDIR /home/Futrobot
